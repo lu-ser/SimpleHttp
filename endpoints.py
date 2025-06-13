@@ -13,8 +13,8 @@ from fastapi.responses import JSONResponse, PlainTextResponse, HTMLResponse, Fil
 from fastapi.staticfiles import StaticFiles
 
 from models import (
-    Prodotto, AggiornaProdotto, Utente, RispostaHTTP,
-    prodotti_db, utenti_db
+    Prodotto, AggiornaProdotto, Utente, RispostaHTTP, Temperatura, CreaTemperatura,
+    prodotti_db, utenti_db, temperature_db
 )
 from utils import (
     crea_risposta, preferisce_html, genera_html_prodotti,
@@ -180,7 +180,7 @@ def register_routes(app: FastAPI):
                     
                     <div class="intro">
                         <h3>Materiali Didattici</h3>
-                        <p>In questa sezione trovi tutti i materiali del corso</p>
+                        <p>In questa sezione trovi tutti i materiali del corso "Didattica per il laboratorio di telecomunicazioni" che puoi scaricare e utilizzare per le tue lezioni.</p>
                         <p><strong>Suggerimento:</strong> Fai clic destro sui link di download e seleziona "Salva link con nome" per scaricare i file.</p>
                     </div>
             """
@@ -444,6 +444,155 @@ def register_routes(app: FastAPI):
             message="Utente creato con successo",
             data=utente,
             endpoint="/utenti"
+        )
+
+    # ================================
+    # API TEMPERATURE (IoT)
+    # ================================
+
+    @app.get("/temperature", response_model=RispostaHTTP, summary="Lista temperature")
+    async def ottieni_temperature(
+        sensore: Optional[str] = Query(None, description="Filtra per sensore"),
+        posizione: Optional[str] = Query(None, description="Filtra per posizione"),
+        limite: int = Query(10, ge=1, le=100, description="Numero massimo di risultati")
+    ):
+        """
+        Lista le letture di temperatura con filtri opzionali
+        
+        Utile per simulare sensori IoT che inviano dati
+        """
+        temperature_filtrate = list(temperature_db.values())
+        
+        # Applica filtri
+        if sensore:
+            temperature_filtrate = [t for t in temperature_filtrate if t.sensore.lower() == sensore.lower()]
+        
+        if posizione:
+            temperature_filtrate = [t for t in temperature_filtrate if t.posizione and posizione.lower() in t.posizione.lower()]
+        
+        # Ordina per timestamp (più recenti prima)
+        temperature_filtrate.sort(key=lambda x: x.timestamp or "", reverse=True)
+        
+        # Applica limite
+        temperature_filtrate = temperature_filtrate[:limite]
+        
+        return crea_risposta(
+            success=True,
+            message=f"Trovate {len(temperature_filtrate)} letture di temperatura",
+            data={
+                "temperature": temperature_filtrate,
+                "statistiche": {
+                    "totale_letture": len(temperature_db),
+                    "sensori_attivi": len(set(t.sensore for t in temperature_db.values())),
+                    "temperatura_media": round(sum(t.valore for t in temperature_db.values()) / len(temperature_db), 2)
+                },
+                "filtri_applicati": {
+                    "sensore": sensore,
+                    "posizione": posizione,
+                    "limite": limite
+                }
+            },
+            endpoint="/temperature"
+        )
+
+    @app.post("/temperature", response_model=RispostaHTTP, status_code=201, summary="Invia temperatura")
+    async def invia_temperatura(temperatura: CreaTemperatura):
+        """
+        Invia una nuova lettura di temperatura
+        
+        Simula un sensore IoT che invia dati al server
+        """
+        from datetime import datetime
+        
+        # Genera nuovo ID
+        nuovo_id = max(temperature_db.keys()) + 1 if temperature_db else 1
+        
+        # Crea la temperatura con timestamp automatico
+        nuova_temperatura = Temperatura(
+            id=nuovo_id,
+            valore=temperatura.valore,
+            sensore=temperatura.sensore,
+            timestamp=datetime.now().isoformat(),
+            unita=temperatura.unita,
+            posizione=temperatura.posizione
+        )
+        
+        # Salva nel database
+        temperature_db[nuovo_id] = nuova_temperatura
+        
+        return crea_risposta(
+            success=True,
+            message="Temperatura registrata con successo",
+            data=nuova_temperatura,
+            endpoint="/temperature"
+        )
+
+    @app.get("/temperature/{temperatura_id}", response_model=RispostaHTTP, summary="Dettagli temperatura")
+    async def ottieni_temperatura(temperatura_id: int = Path(..., ge=1, description="ID della lettura")):
+        """Ottieni dettagli di una specifica lettura di temperatura"""
+        if temperatura_id not in temperature_db:
+            raise HTTPException(
+                status_code=404,
+                detail=f"Lettura temperatura con ID {temperatura_id} non trovata"
+            )
+        
+        temperatura = temperature_db[temperatura_id]
+        
+        return crea_risposta(
+            success=True,
+            message="Lettura temperatura trovata",
+            data=temperatura,
+            endpoint=f"/temperature/{temperatura_id}"
+        )
+
+    @app.delete("/temperature/{temperatura_id}", response_model=RispostaHTTP, summary="Elimina temperatura")
+    async def elimina_temperatura(temperatura_id: int = Path(..., ge=1)):
+        """Elimina una lettura di temperatura"""
+        if temperatura_id not in temperature_db:
+            raise HTTPException(status_code=404, detail="Lettura temperatura non trovata")
+        
+        temperatura_eliminata = temperature_db.pop(temperatura_id)
+        
+        return crea_risposta(
+            success=True,
+            message="Lettura temperatura eliminata con successo",
+            data={"temperatura_eliminata": temperatura_eliminata},
+            endpoint=f"/temperature/{temperatura_id}"
+        )
+
+    @app.get("/temperature/sensore/{nome_sensore}", response_model=RispostaHTTP, summary="Temperature per sensore")
+    async def temperature_per_sensore(nome_sensore: str = Path(..., description="Nome del sensore")):
+        """Ottieni tutte le letture di un sensore specifico"""
+        letture_sensore = [t for t in temperature_db.values() if t.sensore.lower() == nome_sensore.lower()]
+        
+        if not letture_sensore:
+            raise HTTPException(
+                status_code=404,
+                detail=f"Nessuna lettura trovata per il sensore {nome_sensore}"
+            )
+        
+        # Ordina per timestamp
+        letture_sensore.sort(key=lambda x: x.timestamp or "", reverse=True)
+        
+        # Calcola statistiche
+        valori = [t.valore for t in letture_sensore]
+        statistiche = {
+            "numero_letture": len(letture_sensore),
+            "temperatura_minima": min(valori),
+            "temperatura_massima": max(valori),
+            "temperatura_media": round(sum(valori) / len(valori), 2),
+            "ultima_lettura": letture_sensore[0].timestamp if letture_sensore else None
+        }
+        
+        return crea_risposta(
+            success=True,
+            message=f"Letture del sensore {nome_sensore}",
+            data={
+                "sensore": nome_sensore,
+                "letture": letture_sensore,
+                "statistiche": statistiche
+            },
+            endpoint=f"/temperature/sensore/{nome_sensore}"
         )
 
     # ================================

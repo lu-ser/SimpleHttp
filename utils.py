@@ -274,7 +274,19 @@ def genera_html_homepage() -> str:
                     </ul>
                 </div>
                 
-                
+                <div class="card">
+                    <h2>Cosa Imparerai</h2>
+                    <ul class="feature-list">
+                        <li>Come funzionano le richieste HTTP</li>
+                        <li>Differenze tra metodi (GET vs POST vs PUT)</li>
+                        <li>Status codes e gestione errori</li>
+                        <li>Headers e loro utilizzo</li>
+                        <li>Content Negotiation</li>
+                        <li>API RESTful design</li>
+                        <li>Caching e ottimizzazione</li>
+                        <li>Sicurezza e CORS</li>
+                    </ul>
+                </div>
             </div>
             
             <div class="card">

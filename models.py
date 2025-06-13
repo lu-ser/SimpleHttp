@@ -48,6 +48,22 @@ class RisorsaCorso(BaseModel):
     dimensione: str
     url_download: str
 
+class Temperatura(BaseModel):
+    """Modello per le letture di temperatura"""
+    id: Optional[int] = None
+    valore: float = Field(..., description="Temperatura in gradi Celsius")
+    sensore: str = Field(..., description="Nome o ID del sensore")
+    timestamp: Optional[str] = Field(None, description="Timestamp della lettura")
+    unita: str = Field("C", description="Unità di misura")
+    posizione: Optional[str] = Field(None, description="Posizione del sensore")
+
+class CreaTemperatura(BaseModel):
+    """Modello per creare una nuova lettura di temperatura"""
+    valore: float = Field(..., description="Temperatura in gradi Celsius")
+    sensore: str = Field(..., description="Nome o ID del sensore")
+    unita: str = Field("C", description="Unità di misura")
+    posizione: Optional[str] = Field(None, description="Posizione del sensore")
+
 # Database simulato in memoria
 prodotti_db = {
     1: Prodotto(id=1, nome="Smartphone Pro", descrizione="Ultimo modello con 5G", prezzo=899.99, categoria="elettronica", tags=["mobile", "5g"]),
@@ -58,4 +74,12 @@ prodotti_db = {
 utenti_db = {
     1: Utente(id=1, nome="Mario Rossi", email="mario@email.com", eta=30),
     2: Utente(id=2, nome="Giulia Bianchi", email="giulia@email.com", eta=25)
+}
+
+# Database temperature simulate
+temperature_db = {
+    1: Temperatura(id=1, valore=22.5, sensore="SENSOR_01", timestamp="2024-01-15T10:30:00", posizione="Aula A"),
+    2: Temperatura(id=2, valore=19.8, sensore="SENSOR_02", timestamp="2024-01-15T10:31:00", posizione="Aula B"),
+    3: Temperatura(id=3, valore=24.1, sensore="SENSOR_01", timestamp="2024-01-15T10:32:00", posizione="Aula A"),
+    4: Temperatura(id=4, valore=21.3, sensore="SENSOR_03", timestamp="2024-01-15T10:33:00", posizione="Laboratorio"),
 }
