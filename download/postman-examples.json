@@ -1,7 +1,7 @@
 {
     "info": {
         "name": "HTTP Explorer",
-        "description": "Collezione di esempi pratici HTTP",
+        "description": "Collezione di esempi pratici su http",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "item": [
@@ -19,12 +19,11 @@
                             }
                         ],
                         "url": {
-                            "raw": "http://localhost:8000/",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 ""
                             ]
@@ -42,12 +41,11 @@
                             }
                         ],
                         "url": {
-                            "raw": "http://localhost:8000/",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 ""
                             ]
@@ -59,12 +57,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/statistiche",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/statistiche",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "statistiche"
                             ]
@@ -87,12 +84,11 @@
                             }
                         ],
                         "url": {
-                            "raw": "http://localhost:8000/prodotti",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/prodotti",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "prodotti"
                             ]
@@ -110,12 +106,11 @@
                             }
                         ],
                         "url": {
-                            "raw": "http://localhost:8000/prodotti",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/prodotti",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "prodotti"
                             ]
@@ -127,12 +122,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/test/content-negotiation",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/test/content-negotiation",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "test",
                                 "content-negotiation"
@@ -150,12 +144,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/prodotti",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/prodotti",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "prodotti"
                             ]
@@ -167,12 +160,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/prodotti/1",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/prodotti/1",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "prodotti",
                                 "1"
@@ -195,12 +187,11 @@
                             "raw": "{\n  \"nome\": \"Prodotto da Postman\",\n  \"descrizione\": \"Creato tramite richiesta POST\",\n  \"prezzo\": 25.99,\n  \"categoria\": \"test\",\n  \"disponibile\": true,\n  \"tags\": [\"postman\", \"test\"]\n}"
                         },
                         "url": {
-                            "raw": "http://localhost:8000/prodotti",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/prodotti",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "prodotti"
                             ]
@@ -222,12 +213,11 @@
                             "raw": "{\n  \"nome\": \"Prodotto Aggiornato PUT\",\n  \"descrizione\": \"Aggiornato completamente con PUT\",\n  \"prezzo\": 35.99,\n  \"categoria\": \"aggiornato\",\n  \"disponibile\": false,\n  \"tags\": [\"put\", \"aggiornato\"]\n}"
                         },
                         "url": {
-                            "raw": "http://localhost:8000/prodotti/1",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/prodotti/1",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "prodotti",
                                 "1"
@@ -250,12 +240,11 @@
                             "raw": "{\n  \"prezzo\": 19.99,\n  \"disponibile\": true\n}"
                         },
                         "url": {
-                            "raw": "http://localhost:8000/prodotti/1",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/prodotti/1",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "prodotti",
                                 "1"
@@ -268,12 +257,11 @@
                     "request": {
                         "method": "DELETE",
                         "url": {
-                            "raw": "http://localhost:8000/prodotti/1",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/prodotti/1",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "prodotti",
                                 "1"
@@ -291,12 +279,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/prodotti?categoria=elettronica",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/prodotti?categoria=elettronica",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "prodotti"
                             ],
@@ -314,12 +301,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/prodotti?disponibile=true",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/prodotti?disponibile=true",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "prodotti"
                             ],
@@ -337,12 +323,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/prodotti?prezzo_min=100&prezzo_max=1000",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/prodotti?prezzo_min=100&prezzo_max=1000",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "prodotti"
                             ],
@@ -364,12 +349,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/prodotti?limite=2&pagina=1",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/prodotti?limite=2&pagina=1",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "prodotti"
                             ],
@@ -396,12 +380,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/test/status/200",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/test/status/200",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "test",
                                 "status",
@@ -415,12 +398,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/test/status/201",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/test/status/201",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "test",
                                 "status",
@@ -434,12 +416,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/test/status/400",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/test/status/400",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "test",
                                 "status",
@@ -453,12 +434,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/test/status/404",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/test/status/404",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "test",
                                 "status",
@@ -472,12 +452,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/test/status/500",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/test/status/500",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "test",
                                 "status",
@@ -496,12 +475,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/headers",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/headers",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "headers"
                             ]
@@ -513,12 +491,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/user-agent",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/user-agent",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "user-agent"
                             ]
@@ -540,12 +517,11 @@
                             }
                         ],
                         "url": {
-                            "raw": "http://localhost:8000/test/headers-personalizzati",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/test/headers-personalizzati",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "test",
                                 "headers-personalizzati"
@@ -572,12 +548,11 @@
                             "raw": "{\n  \"messaggio\": \"Test echo\",\n  \"studente\": \"Nome Cognome\",\n  \"data\": \"2024-01-15\"\n}"
                         },
                         "url": {
-                            "raw": "http://localhost:8000/test/echo",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/test/echo",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "test",
                                 "echo"
@@ -595,12 +570,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/test/delay/2",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/test/delay/2",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "test",
                                 "delay",
@@ -614,12 +588,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/test/cache",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/test/cache",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "test",
                                 "cache"
@@ -632,12 +605,11 @@
                     "request": {
                         "method": "OPTIONS",
                         "url": {
-                            "raw": "http://localhost:8000/test/cors",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/test/cors",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "test",
                                 "cors"
@@ -650,12 +622,11 @@
                     "request": {
                         "method": "HEAD",
                         "url": {
-                            "raw": "http://localhost:8000/prodotti",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/prodotti",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "prodotti"
                             ]
@@ -667,12 +638,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/test/ip",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/test/ip",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "test",
                                 "ip"
@@ -690,12 +660,11 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "http://localhost:8000/risorse",
-                            "protocol": "http",
+                            "raw": "https://simplehttp-server.onrender.com/risorse",
+                            "protocol": "https",
                             "host": [
-                                "localhost"
+                                "simplehttp-server.onrender.com"
                             ],
-                            "port": "8000",
                             "path": [
                                 "risorse"
                             ]
