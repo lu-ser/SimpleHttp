@@ -1,0 +1,708 @@
+{
+    "info": {
+        "name": "HTTP Explorer",
+        "description": "Collezione di esempi pratici HTTP",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "1. Esplorare il server",
+            "item": [
+                {
+                    "name": "Homepage (JSON)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000/",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Homepage (HTML)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "text/html"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000/",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Statistiche Server",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/statistiche",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "statistiche"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "2. Content Negotiation",
+            "item": [
+                {
+                    "name": "Prodotti (JSON)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000/prodotti",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "prodotti"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Prodotti (HTML)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "text/html"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000/prodotti",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "prodotti"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Content Negotiation Demo",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/test/content-negotiation",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "test",
+                                "content-negotiation"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "3. Metodi HTTP - CRUD",
+            "item": [
+                {
+                    "name": "GET - Lista Prodotti",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/prodotti",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "prodotti"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "GET - Singolo Prodotto",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/prodotti/1",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "prodotti",
+                                "1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "POST - Crea Prodotto",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"nome\": \"Prodotto da Postman\",\n  \"descrizione\": \"Creato tramite richiesta POST\",\n  \"prezzo\": 25.99,\n  \"categoria\": \"test\",\n  \"disponibile\": true,\n  \"tags\": [\"postman\", \"test\"]\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:8000/prodotti",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "prodotti"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "PUT - Aggiorna Prodotto Completo",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"nome\": \"Prodotto Aggiornato PUT\",\n  \"descrizione\": \"Aggiornato completamente con PUT\",\n  \"prezzo\": 35.99,\n  \"categoria\": \"aggiornato\",\n  \"disponibile\": false,\n  \"tags\": [\"put\", \"aggiornato\"]\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:8000/prodotti/1",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "prodotti",
+                                "1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "PATCH - Aggiorna Prodotto Parziale",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"prezzo\": 19.99,\n  \"disponibile\": true\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:8000/prodotti/1",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "prodotti",
+                                "1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "DELETE - Elimina Prodotto",
+                    "request": {
+                        "method": "DELETE",
+                        "url": {
+                            "raw": "http://localhost:8000/prodotti/1",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "prodotti",
+                                "1"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "4. Query Parameters e Filtri",
+            "item": [
+                {
+                    "name": "Filtra per Categoria",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/prodotti?categoria=elettronica",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "prodotti"
+                            ],
+                            "query": [
+                                {
+                                    "key": "categoria",
+                                    "value": "elettronica"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Filtra per Disponibilità",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/prodotti?disponibile=true",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "prodotti"
+                            ],
+                            "query": [
+                                {
+                                    "key": "disponibile",
+                                    "value": "true"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Filtra per Range Prezzo",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/prodotti?prezzo_min=100&prezzo_max=1000",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "prodotti"
+                            ],
+                            "query": [
+                                {
+                                    "key": "prezzo_min",
+                                    "value": "100"
+                                },
+                                {
+                                    "key": "prezzo_max",
+                                    "value": "1000"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Paginazione",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/prodotti?limite=2&pagina=1",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "prodotti"
+                            ],
+                            "query": [
+                                {
+                                    "key": "limite",
+                                    "value": "2"
+                                },
+                                {
+                                    "key": "pagina",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "5. Status Codes Testing",
+            "item": [
+                {
+                    "name": "200 OK",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/test/status/200",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "test",
+                                "status",
+                                "200"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "201 Created",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/test/status/201",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "test",
+                                "status",
+                                "201"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "400 Bad Request",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/test/status/400",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "test",
+                                "status",
+                                "400"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "404 Not Found",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/test/status/404",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "test",
+                                "status",
+                                "404"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "500 Internal Server Error",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/test/status/500",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "test",
+                                "status",
+                                "500"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "6. Headers e Debugging",
+            "item": [
+                {
+                    "name": "Ispeziona Headers",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/headers",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "headers"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Analizza User-Agent",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/user-agent",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "user-agent"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Headers Personalizzati",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-Custom-Header",
+                                "value": "Valore-Test"
+                            },
+                            {
+                                "key": "X-Student-Name",
+                                "value": "Nome-Studente"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://localhost:8000/test/headers-personalizzati",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "test",
+                                "headers-personalizzati"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Echo Richiesta Completa",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Test-Header",
+                                "value": "Valore-Echo"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"messaggio\": \"Test echo\",\n  \"studente\": \"Nome Cognome\",\n  \"data\": \"2024-01-15\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://localhost:8000/test/echo",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "test",
+                                "echo"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "7. Testing Avanzato",
+            "item": [
+                {
+                    "name": "Test Delay",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/test/delay/2",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "test",
+                                "delay",
+                                "2"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Test Cache",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/test/cache",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "test",
+                                "cache"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Test CORS Preflight",
+                    "request": {
+                        "method": "OPTIONS",
+                        "url": {
+                            "raw": "http://localhost:8000/test/cors",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "test",
+                                "cors"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Test HEAD Method",
+                    "request": {
+                        "method": "HEAD",
+                        "url": {
+                            "raw": "http://localhost:8000/prodotti",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "prodotti"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Ottieni IP Client",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/test/ip",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "test",
+                                "ip"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "8. Risorse del Corso",
+            "item": [
+                {
+                    "name": "Pagina Risorse",
+                    "request": {
+                        "method": "GET",
+                        "url": {
+                            "raw": "http://localhost:8000/risorse",
+                            "protocol": "http",
+                            "host": [
+                                "localhost"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "risorse"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
